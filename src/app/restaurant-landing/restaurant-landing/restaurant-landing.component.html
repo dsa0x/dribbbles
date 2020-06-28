@@ -1,18 +1,32 @@
-<!-- <div class="" fxLayout="row">
-  <div>fdgf</div>
-  <div>sdfhgb</div>
-</div>
+<mat-card class="container" fxLayout="row" fxFill>
+  <div class="wrapper" fxLayout="row">
+    <div
+      class="left"
+      fxFlex="50%"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <div class="question" fxLayout="column" fxLayoutAlign="left end">
+        <span [@scaleAnimation]>Where do you</span>
+        <span [@scaleAnimation]>want to eat?</span>
+      </div>
 
-<div fxLayout="row" fxLayout.xs="column">
-  <div class="child-1">sfdgf</div>
-  <div class="child-2">sfdgfb</div>
-</div> -->
+      <div class="input">
+        <mat-icon>search</mat-icon>
+        <input matInput placeholder="Enter country, city, street....." />
 
-<div fxLayout="row">
-  <div fxFlex>First item in row</div>
-  <div fxFlex>Second item in row</div>
-</div>
-<div fxLayout="column">
-  <div fxFlex>First item in column</div>
-  <div fxFlex>Second item in column</div>
-</div>
+        <button>Search</button>
+      </div>
+    </div>
+    <div
+      class="right"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      fxFlex="50%"
+    >
+      <div>
+        <img src="../../../assets/svgs/hamburger.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</mat-card>
