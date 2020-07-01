@@ -10,21 +10,58 @@
         <span [@scaleAnimation]>Where do you</span>
         <span [@scaleAnimation]>want to eat?</span>
       </div>
-
       <div class="input">
-        <mat-icon>search</mat-icon>
-        <input matInput placeholder="Enter country, city, street....." />
-
-        <button>Search</button>
+        <div>
+          <mat-icon class="search-icon">search</mat-icon>
+          <input
+            (mouseover)="location = true"
+            (mouseout)="location = false"
+            matInput
+            placeholder="Enter country, city, street....."
+            #locationInput
+            [ngModel]="city"
+            (ngModelChange)="onInputChange($event)"
+          />
+          <button>Search</button>
+        </div>
+        <hr
+          (mouseover)="location = true"
+          [ngStyle]="{
+            display: !location ? 'none' : 'block'
+          }"
+        />
+        <div
+          (mouseover)="location = true"
+          (mouseout)="location = false"
+          class="location"
+          [ngStyle]="{
+            height: !location ? '0' : 'auto',
+            padding: !location ? '0 2rem' : '2rem',
+            opacity: !location ? '0' : '1'
+          }"
+        >
+          <div class="nolocation" *ngIf="!matchedCities.length">
+            <mat-icon class="search-icon">gps_fixed</mat-icon>
+            <span>Current Location</span>
+          </div>
+          <div class="yeslocation" *ngIf="matchedCities.length">
+            <span *ngFor="let citi of matchedCities">
+              <mat-icon>location_on</mat-icon>
+              <span>{{ citi | titlecase }}</span>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
+
     <div
       class="right"
-      fxLayout="row"
-      fxLayoutAlign="center center"
+      fxLayout="column"
+      fxLayoutAlign="start center"
       fxFlex="50%"
     >
-      <div>
+      <app-header></app-header>
+      <div class="image-wrap">
         <img src="../../../assets/svgs/hamburger.svg" alt="" />
       </div>
     </div>

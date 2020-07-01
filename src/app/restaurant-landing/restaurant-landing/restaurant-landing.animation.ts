@@ -7,6 +7,7 @@ import {
   transition,
   trigger,
   state,
+  keyframes,
 } from '@angular/animations';
 
 export const SCALE_ANIMATION = trigger('scaleAnimation', [
@@ -22,12 +23,53 @@ export const SCALE_ANIMATION = trigger('scaleAnimation', [
       bottom: '200px',
     })
   ),
-  // transition('inactive => active', animate('100ms ease-in')),
-  // transition('active => inactive', animate('100ms ease-in')),
   transition('void <=> *', [
     style({ transform: 'translateY(100px)', opacity: '.1' }),
     animate(1000),
-    // animate both the newly entered and removed items on the page
-    // at the same time
   ]),
+]);
+export const DOWN_ANIMATION = trigger('downAnimation', [
+  state(
+    'open',
+    style({
+      height: '200px',
+      opacity: 1,
+      backgroundColor: 'yellow',
+    })
+  ),
+  state(
+    'closed',
+    style({
+      height: '100px',
+      opacity: 0.5,
+      backgroundColor: 'green',
+    })
+  ),
+  transition('void <=> *', [
+    animate(
+      '2s',
+      keyframes([
+        style({ position: 'absolute' }),
+        style({ position: 'relative' }),
+        //  style({ opacity: 1, offset: 0.5 }),
+        //  style({ opacity: 0.2, offset: 0.7 }),
+      ])
+    ),
+  ]),
+]);
+
+export const DROPDOWN_ANIMATION = trigger('scaleAnimation', [
+  state(
+    ':enter',
+    style({
+      bottom: '0px',
+    })
+  ),
+  state(
+    ':leave',
+    style({
+      bottom: '200px',
+    })
+  ),
+  transition(':enter <=> :leave', [style({ opacity: '.9' }), animate(1000)]),
 ]);

@@ -1,0 +1,20 @@
+@import "../../../styles/variables";
+
+:host ::ng-deep {
+  width: 100%;
+}
+
+.main {
+  padding: 2rem;
+
+  @media screen and (min-width: 1024px) {
+    padding-left: 15rem;
+  }
+
+  & > span {
+    cursor: pointer;
+    &:hover {
+      color: $restaurant-color-primary;
+    }
+  }
+}
